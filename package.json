@@ -1,0 +1,24 @@
+{
+  "name": "emotemon",
+  "version": "1.0.0",
+  "description": "Catch 'em all!",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-cli": "^6.24.0",
+    "babel-preset-react": "^6.23.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lental/emotemon.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lental/emotemon/issues"
+  },
+  "homepage": "https://github.com/lental/emotemon#readme"
+}

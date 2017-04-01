@@ -7,9 +7,15 @@ export GOPATH
 export GOBIN
 
 
-local:
+local: babel
 	go install
 	bin/$(PROJECT_NAME)
 			
 get:
 	go get
+
+babel:
+	./node_modules/.bin/babel static/jsb/ -d static/jsbc
+
+watch-babel:
+	fswatch static/jsb | xargs -n1 -I{} ./update-babel.sh
