@@ -11,3 +11,5 @@ local:
 	go install
 	bin/$(PROJECT_NAME)
 			
+get:
+	go get
