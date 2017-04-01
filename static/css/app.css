@@ -1,0 +1,9 @@
+#channel-container {
+	display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.channel {
+  flex: 1 0 100px;
+}

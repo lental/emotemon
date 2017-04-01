@@ -20,7 +20,7 @@ func GetHandlers() http.Handler {
 	staticRouter.PathPrefix("/html/").Handler(http.FileServer(http.Dir("./static/")))
 	staticRouter.PathPrefix("/jsb/").Handler(http.FileServer(http.Dir("./static/")))
 	staticRouter.PathPrefix("/jsbc/").Handler(http.FileServer(http.Dir("./static/")))
-	// staticRouter.PathPrefix("/vendor/").Handler(http.FileServer(http.Dir("./static/")))
+	staticRouter.PathPrefix("/vendor/").Handler(http.FileServer(http.Dir("./static/")))
 	// staticRouter.PathPrefix("/images/").Handler(http.FileServer(http.Dir("./static/")))
 
 	return staticRouter
