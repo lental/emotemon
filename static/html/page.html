@@ -10,19 +10,19 @@
   <script src="/vendor/react/react-dom.js"></script>
   <!--<script src="/vendor/react/babel.min.js"></script>-->
   <script src="/vendor/react/remarkable.min.js"></script>
+  <script src="https://unpkg.com/redux@3.6.0/dist/redux.min.js"></script>
+  <script src="/vendor/react/react-redux.min.js"></script>
 
   <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
   <script src="/jsbc/app.js"> </script>
+  <script src="/jsbc/emote.js"> </script>
+  <script src="/jsbc/channel.js"> </script>
   <link href="/css/app.css" rel="stylesheet"></link>
   <script>
     
     $().ready(function (){
-      var AppFactory = React.createFactory(AppPage);
-      var app = AppFactory({});
-      ReactDOM.render(
-        app,
-        document.getElementById('content')
-        );
+      startApp();
+      
     });
   </script>
   </head>
