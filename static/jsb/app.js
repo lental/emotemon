@@ -58,14 +58,21 @@ var AppPage = React.createClass({
         <div>
           <h1 ref="splash" className="splash">
           </h1>
-          <BackgroundColorChooser store={this.props.store} />
+          <BackgroundColorChooser store={this.props.store} onClick={() => {this.props.store.dispatch({type:"CHANGE_COLOR", color:$("#bg-color").val()});}} />
           <div id="channel-container">
           { Object.keys(this.state.channels).map(function (key, index, arr) {
             if (index > this.props.store.getState().channel.channelCount) return;
-            return Object.keys(this.state.channels[key].emotes).map(function (emotekey) {
-            return (
-              <Emote key={emotekey + ", " + key} emote={this.state.channels[key].emotes[emotekey]} template={this.state.template}/>
-              );
+            return Object.keys(this.state.channels[key].emotes).map(function (emotekey, index) {
+              var style = [];
+              if (index == 0) {
+                style.push("emoteStart");
+              }
+              if (index == this.state.channels[key].emotes.length - 1) {
+                style.push("emoteEnd");
+              }
+              return (
+                <Emote key={emotekey + ", " + key} emote={this.state.channels[key].emotes[emotekey]} template={this.state.template} style={style}/>
+                );
 
             }, this);
         }, this)}
