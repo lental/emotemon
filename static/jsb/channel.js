@@ -25,3 +25,13 @@ var Channel = React.createClass({
       );
   }
 });
+
+var ChannelIncrement = ({
+  onClick
+}) => (
+  <div>
+      <button id="bg-color-submit" onClick={onClick}>Add More Emotes</button>
+  </div>
+);
+
+

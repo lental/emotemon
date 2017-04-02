@@ -58,7 +58,8 @@ var AppPage = React.createClass({
         <div>
           <h1 ref="splash" className="splash">
           </h1>
-          <BackgroundColorChooser store={this.props.store} onClick={() => {this.props.store.dispatch({type:"CHANGE_COLOR", color:$("#bg-color").val()});}} />
+          <BackgroundColorChooser onClick={() => {this.props.store.dispatch({type:"CHANGE_COLOR", color:$("#bg-color").val()});}} />
+          <ChannelIncrement onClick={() => {this.props.store.dispatch({type:"INCREMENT"});}}/>
           <div id="channel-container">
           { Object.keys(this.state.channels).map(function (key, index, arr) {
             if (index > this.props.store.getState().channel.channelCount) return;

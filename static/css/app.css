@@ -2,6 +2,12 @@
 	display: flex;
   width: 100%;
   flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+#channel-container:after {
+  content: "";
+  flex: auto;
 }
 
 .channel {
