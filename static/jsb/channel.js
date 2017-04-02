@@ -8,7 +8,6 @@ var Channel = React.createClass({
     return null;
   },
 
-
   componentDidMount: function() {
   }, 
   
