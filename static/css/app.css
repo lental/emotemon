@@ -37,5 +37,5 @@
 }
 
 .emoteDisabled {
-  filter: contrast(0%) brightness(10%);
+  /*filter: contrast(0%) brightness(10%);*/
 }
