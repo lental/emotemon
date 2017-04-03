@@ -6,7 +6,7 @@ var Emote = React.createClass({
   },  
   render: function() {
     return (
-        <div ref={(d) => { this.wrapperDiv = d;}}
+        <div ref="wrapperDiv"
         		className={"emote emoteDisabled " + this.props.style.join(" ")}
         		onMouseOver={this.mouseOver}
         		onMouseOut={this.mouseOut} >
@@ -16,10 +16,10 @@ var Emote = React.createClass({
   },
 
   mouseOver: function() {
-  	$(this.wrapperDiv).removeClass("emoteDisabled");
+  	$(this.refs.wrapperDiv).removeClass("emoteDisabled");
   },
   mouseOut: function() {
-  	$(this.wrapperDiv).addClass("emoteDisabled");
+  	$(this.refs.wrapperDiv).addClass("emoteDisabled");
   },
 });
 
