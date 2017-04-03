@@ -2,11 +2,14 @@
 var s; // for console debugging
 
 function startApp() {
+  const { Provider } = ReactRedux;
   const { createStore, combineReducers } = Redux;
   s = createStore(combineReducers({channel, backgroundColor}));
   const render = () => {
     ReactDOM.render(
-    (<AppPage store={s}/>),
+    (<Provider store={s}>
+      <AppPage/>
+    </Provider>),
     document.getElementById('content')
     );
   };
@@ -46,9 +49,6 @@ var ChannelIncrement = ({
 
 
 var AppPage = React.createClass({
-  propTypes: {
-    store: React.PropTypes.object.isRequired,
-  },
   getInitialState: function() {
     return {channels:{}, template: {}};
   },
@@ -61,19 +61,20 @@ var AppPage = React.createClass({
   }, 
   
   render: function() {
-    document.body.style.backgroundColor = this.props.store.getState().backgroundColor.color;
-    var count = this.state.farthest;
+    var store = this.context.store;
+    
+    document.body.style.backgroundColor = store.getState().backgroundColor.color;
     return (
         <div>
           <h1 ref="splash" className="splash">
           </h1>
           <div id="header">
-            <BackgroundColorChooser onClick={() => {this.props.store.dispatch({type:"CHANGE_COLOR", color:$("#bg-color").val()});}} />
-            <ChannelIncrement onClick={() => {this.props.store.dispatch({type:"INCREMENT"});}}/>
+            <BackgroundColorChooser onClick={() => {store.dispatch({type:"CHANGE_COLOR", color:$("#bg-color").val()});}} />
+            <ChannelIncrement onClick={() => {store.dispatch({type:"INCREMENT"});}}/>
           </div>
           <div id="channel-container">
           { Object.keys(this.state.channels).map(function (key, index, arr) {
-            if (index > this.props.store.getState().channel.channelCount) return;
+            if (index > store.getState().channel.channelCount) return;
             return Object.keys(this.state.channels[key].emotes).map(function (emotekey, index) {
               var style = [];
               if (index == 0) {
@@ -93,3 +94,7 @@ var AppPage = React.createClass({
       );
   }
 });
+
+AppPage.contextTypes = {
+  store: React.PropTypes.object,
+}
