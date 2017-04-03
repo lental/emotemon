@@ -3,15 +3,7 @@ var Emote = React.createClass({
     template: React.PropTypes.object.isRequired,
     emote: React.PropTypes.object.isRequired,
     style: React.PropTypes.array.isRequired,
-  },
-  getInitialState: function() {
-    return null;
-  },
-
-
-  componentDidMount: function() {
-  }, 
-  
+  },  
   render: function() {
     return (
         <div ref={(d) => { this.wrapperDiv = d;}}
@@ -23,12 +15,11 @@ var Emote = React.createClass({
       );
   },
 
-
-    // 2. bind it with fat arrows.
-    mouseOver: function() {
-    	$(this.wrapperDiv).removeClass("emoteDisabled");
-    },
-    mouseOut: function() {
-    	$(this.wrapperDiv).addClass("emoteDisabled");
-    },
+  mouseOver: function() {
+  	$(this.wrapperDiv).removeClass("emoteDisabled");
+  },
+  mouseOut: function() {
+  	$(this.wrapperDiv).addClass("emoteDisabled");
+  },
 });
+

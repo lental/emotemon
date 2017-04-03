@@ -1,4 +1,14 @@
 
+var backgroundColor = (state = {color:"#FFD"}, action) => {
+  switch (action.type) {
+    case "CHANGE_COLOR":
+      return {color: action.color};
+      break;
+    default:
+  }
+  return state;
+};
+
 const BackgroundColorChooser = ({
   onClick
 }) => (
