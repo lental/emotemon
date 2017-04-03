@@ -8,14 +8,12 @@ function startApp() {
 
   s = createStore(reducers);
   
-  const render = () => {
-    ReactDOM.render(
+  const render = () => { ReactDOM.render(
     (<Provider store={s}>
-      <AppPage/>
+      <App/>
     </Provider>),
     document.getElementById('content')
-    );
-  };
+  );};
   s.subscribe(render);
   render();
 
@@ -35,7 +33,7 @@ var subscriberData = (state = {channels:{}, template: {}}, action) => {
     return state;
   };
 
-var AppPage = React.createClass({
+var App = React.createClass({
   getInitialState: function() {
     return {channels:{}, template: {}};
   },
@@ -51,8 +49,8 @@ var AppPage = React.createClass({
             Emotemon
           </h1>
           <div id="header">
-            <BackgroundColorChooser onClick={() => {store.dispatch({type:"CHANGE_COLOR", color:$("#bg-color").val()});}} />
-            <ChannelIncrement onClick={() => {store.dispatch({type:"INCREMENT"});}}/>
+            <BackgroundColorChooser />
+            <ChannelIncrement />
           </div>
           <VisibleEmotesList />
 
@@ -61,6 +59,6 @@ var AppPage = React.createClass({
   }
 });
 
-AppPage.contextTypes = {
+App.contextTypes = {
   store: React.PropTypes.object,
 }

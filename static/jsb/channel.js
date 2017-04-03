@@ -10,10 +10,16 @@ var channel = (state = {channelCount:100}, action) => {
   };
 
 
-var ChannelIncrement = ({
-  onClick
+var incrementAction = () => {
+  return {type:"INCREMENT"};
+}
+
+let ChannelIncrement = ({
+  dispatch
 }) => (
   <div className="headerElement">
-      <button id="bg-color-submit" onClick={onClick}> Add More Emotes</button>
+      <button id="bg-color-submit" onClick={() => {dispatch(incrementAction())}}> Add More Emotes</button>
   </div>
 );
+
+ChannelIncrement = connect()(ChannelIncrement)
