@@ -8,14 +8,12 @@ function startApp() {
 
   s = createStore(reducers);
   
-  const render = () => { ReactDOM.render(
+  ReactDOM.render(
     (<Provider store={s}>
       <App/>
     </Provider>),
     document.getElementById('content')
-  );};
-  s.subscribe(render);
-  render();
+  );
 
   $.getJSON('/vendor/subscriber.json', function(data) {
     s.dispatch({type: "ADD_CHANNELS", "template": data.template, "channels": data.channels});
@@ -34,21 +32,14 @@ var subscriberData = (state = {channels:{}, template: {}}, action) => {
   };
 
 var App = React.createClass({
-  getInitialState: function() {
-    return {channels:{}, template: {}};
-  },
-  
   render: function() {
-    var store = this.context.store;
-    var state = store.getState();
-
-    document.body.style.backgroundColor = store.getState().backgroundColor.color;
     return (
         <div>
           <h1 ref="splash" className="splash">
             Emotemon
           </h1>
           <div id="header">
+            <BackgroundChangeExecutor />
             <BackgroundColorChooser />
             <ChannelIncrement />
           </div>
@@ -58,7 +49,3 @@ var App = React.createClass({
       );
   }
 });
-
-App.contextTypes = {
-  store: React.PropTypes.object,
-}
