@@ -25,7 +25,6 @@ var backgroundColor = (state = {color:"#FFD"}, action) => {
     return state;
   };
 
-
 var channel = (state = {channelCount:100}, action) => {
     switch (action.type) {
       case "INCREMENT":
@@ -35,6 +34,16 @@ var channel = (state = {channelCount:100}, action) => {
     }
     return state;
   };
+
+
+var ChannelIncrement = ({
+  onClick
+}) => (
+  <div className="headerElement">
+      <button id="bg-color-submit" onClick={onClick}>Add More Emotes</button>
+  </div>
+);
+
 
 var AppPage = React.createClass({
   propTypes: {
@@ -58,8 +67,10 @@ var AppPage = React.createClass({
         <div>
           <h1 ref="splash" className="splash">
           </h1>
-          <BackgroundColorChooser onClick={() => {this.props.store.dispatch({type:"CHANGE_COLOR", color:$("#bg-color").val()});}} />
-          <ChannelIncrement onClick={() => {this.props.store.dispatch({type:"INCREMENT"});}}/>
+          <div id="header">
+            <BackgroundColorChooser onClick={() => {this.props.store.dispatch({type:"CHANGE_COLOR", color:$("#bg-color").val()});}} />
+            <ChannelIncrement onClick={() => {this.props.store.dispatch({type:"INCREMENT"});}}/>
+          </div>
           <div id="channel-container">
           { Object.keys(this.state.channels).map(function (key, index, arr) {
             if (index > this.props.store.getState().channel.channelCount) return;

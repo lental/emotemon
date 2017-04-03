@@ -10,9 +10,14 @@
   flex: auto;
 }
 
-.channel {
-  flex: 1 0;
-  border: 1px solid black;
+
+.headerElement {
+	display:inline;
+	margin-right:5px;
+}
+
+#header {
+	margin-bottom:10px;
 }
 
 .emote {
@@ -29,4 +34,8 @@
 .emoteEnd {
 	border-right:1px solid black;
 	margin-right: 1px;
+}
+
+.emoteDisabled {
+  filter: contrast(0%) brightness(10%);
 }
